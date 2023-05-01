@@ -1,0 +1,23 @@
+<h1>新規投稿</h1>
+<% if @list.errors.any? %>
+  <%= @list.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @list.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<!-- form_with部分 -->
+<%= form_with model: @list do |f| %>
+ <h2>タイトル</h2>　
+ <%= f.text_field :title %>
+ 
+ <h2>本文</h2>
+ <%= f.text_field :body %>
+ 
+ <h2>画像</h2>
+ <%= f.file_field :image, acept: "image/*" %>
+ 
+ <%= f.submit '投稿' %>
+  
+<% end %>
